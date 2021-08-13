@@ -6,6 +6,8 @@ The project utilizes the following server components: DynamoDb, S3, and SES
 
 After logging in, you can add the list of classes that the instructor is planning on teaching for the week and upload a picture to show where the class is being taught. You can also add your email to get information about the studio. 
 
+Please see CapstoneImages folder for deployment pictures. 
+
 # NOTES ABOUT LIMITATIONS WITH SES EMAIL FEATURE:
 ## Assumptions: 
  * Be sure to enter email address with valid domain (i.e google, etc). 
