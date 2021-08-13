@@ -49,9 +49,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         region: 'us-east-1' 
      });
 
-    // await ses.verifyEmailIdentity({EmailAddress: sender}).promise(); 
-    // await ses.verifyEmailIdentity({EmailAddress: recipient}).promise(); 
-
     // Specify the parameters to pass to the API.
     var params = { 
         Source: sender, 
@@ -83,21 +80,30 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     logger.info("Try to send email");
     await ses.sendEmail(params, function(err, data) {
     // If something goes wrong, print an error message.
-        logger.info("Sending email");
         if(err) {
-            logger.info(err.message);
+            logger.info(`Email not sent: ${err.message}`);
+            return {
+                statusCode: 400,
+                headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Credentials': true
+                },
+                body: JSON.stringify({
+                })
+              }
         } else {
             logger.info("Email sent! Message ID: ", data.MessageId);
+            return {
+                statusCode: 201,
+                headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Credentials': true
+                },
+                body: JSON.stringify({
+                })
+              }
         }
     }).promise();
 
-    return {
-        statusCode: 201,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true
-        },
-        body: JSON.stringify({
-        })
-      }
+
 };
