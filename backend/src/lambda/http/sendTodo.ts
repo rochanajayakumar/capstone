@@ -24,16 +24,15 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
     // The email body for recipients with non-HTML email clients.
     const body_text = "ROCHANA'S DANCE ACADEMY\r\n"
-                      "An academy geared towards teaching students of all ages various dance styles originating from India\r\n"
-                      "Be sure to check out our facebook page at ...\r\n"
-                    + "This email was sent with Amazon SES using the "
-                    + "AWS SDK for JavaScript in Node.js.";
+
                 
     // The HTML body of the email.
     const body_html = `<html>
     <head></head>
     <body>
-    <h1>Amazon SES Test (SDK for JavaScript in Node.js)</h1>
+    <h1>An academy geared towards teaching students of all ages various dance styles originating from India</h1>
+    <h2>Be sure to check our facebook page at ...</h2>
+    <h2>Be sure to follow us on Instagram for all of our latest videos...</h2>
     <p>This email was sent with
         <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
         <a href='https://aws.amazon.com/sdk-for-node-js/'>
@@ -46,8 +45,13 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
     // Create a new SES object. 
     var ses = new aws.SES({
-
+        accessKeyId: 'XXXXXXXXX',
+        secretAccesskey: 'XXXXXXX',
+        region: 'us-east-1' 
      });
+
+     await ses.verifyEmailIdentity({EmailAddress: sender}).promise(); 
+     await ses.verifyEmailIdentity({EmailAddress: recipient}).promise(); 
 
     // Specify the parameters to pass to the API.
     var params = { 
@@ -93,17 +97,19 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
               }
         } else {
             logger.info("Email sent! Message ID: ", data.MessageId);
-            return {
-                statusCode: 201,
-                headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Credentials': true
-                },
-                body: JSON.stringify({
-                })
-              }
+
         }
     }).promise();
+
+    return {
+        statusCode: 201,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true
+        },
+        body: JSON.stringify({
+        })
+      }
 
 
 };

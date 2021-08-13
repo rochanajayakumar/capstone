@@ -93,19 +93,19 @@ functions:
           - ses:VerifyEmailIdentity
         Resource: '*'
 
-  VerifyTodo:
-    handler: src/lambda/http/verifyEmail.handler
-    events:
-      - http:
-          method: put
-          path: todos
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: Allow
-        Action:
-          - ses:VerifyEmailIdentity
-        Resource: '*'
+  # VerifyTodo:
+  #   handler: src/lambda/http/verifyEmail.handler
+  #   events:
+  #     - http:
+  #         method: put
+  #         path: todos
+  #         cors: true
+  #         authorizer: Auth
+  #   iamRoleStatements:
+  #     - Effect: Allow
+  #       Action:
+  #         - ses:VerifyEmailIdentity
+  #       Resource: '*'
 
   # TODO: Configure this function
   DeleteTodo:

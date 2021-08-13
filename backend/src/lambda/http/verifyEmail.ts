@@ -6,7 +6,7 @@ import { createLogger } from '../../utils/logger'
 const logger = createLogger('sendTodo')
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-    logger.info(`Verify Email: ${event.body}`);
+    logger.info(`Verify: ${event.body}`);
 
     const sendRequest: SendTodoRequest = JSON.parse(event.body)
     const sender = 'rochana.ads@gmail.com'; 
@@ -15,8 +15,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
     // Create a new SES object. 
     var ses = new aws.SES({
-        accessKeyId: 'AKIAZGQ6K54C6DP2J2US',
-        secretAccesskey: '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',
+        accessKeyId: 'XXXXXXXXX',
+        secretAccesskey: 'XXXXXXX',
         region: 'us-east-1' 
      });
 

@@ -107,6 +107,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState > {
       alert('Todo deletion failed')
     }
   }
+  
 
   onTodoCheck = async (pos: number) => {
     try {
@@ -141,11 +142,11 @@ export class Todos extends React.PureComponent<TodosProps, TodosState > {
   render() {
     return (
       <div>
-        <Header as="h1">Dance Classes</Header>
+        <Header as="h1">Rochana's Dance Academy</Header>
         {this.renderCreateTodoInput()}
         {this.renderTodos()}
+        {/* {this.renderVerifyEmailInput()} */}
         {this.renderEmailInput()}
-        {this.renderVerifyEmailInput()}
       </div>
     )
   }
@@ -184,11 +185,11 @@ export class Todos extends React.PureComponent<TodosProps, TodosState > {
               labelPosition: 'middle',
               icon: 'mail',
               content: 'Verify email id: ',
-              onClick: this.onTodoSend
+              onClick: this.onTodoVerifyEmail
             }}
             fluid
             actionPosition="left"
-            placeholder="Enter email id to be added to our distro list..."
+            placeholder="Enter email id and verify your email address to be added to our list..."
             onChange={this.handleEmailInput}
           />
         </Grid.Column>
@@ -212,7 +213,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState > {
             }}
             fluid
             actionPosition="left"
-            placeholder="Enter email id for list of current classes..."
+            placeholder="Enter email id to be added to our distro list for latest information..."
             onChange={this.handleEmailInput}
           />
         </Grid.Column>
