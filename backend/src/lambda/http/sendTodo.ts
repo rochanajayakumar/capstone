@@ -20,10 +20,12 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     //const configuration_set = "ConfigSet";
 
     // The subject line for the email.
-    const subject = "Dance Class List";
+    const subject = "Rochana's Dance Academy";
 
     // The email body for recipients with non-HTML email clients.
-    const body_text = "Amazon SES Test (SDK for JavaScript in Node.js)\r\n"
+    const body_text = "ROCHANA'S DANCE ACADEMY\r\n"
+                      "An academy geared towards teaching students of all ages various dance styles originating from India\r\n"
+                      "Be sure to check out our facebook page at ...\r\n"
                     + "This email was sent with Amazon SES using the "
                     + "AWS SDK for JavaScript in Node.js.";
                 
@@ -44,9 +46,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
     // Create a new SES object. 
     var ses = new aws.SES({
-        accessKeyId: 'AKIAZGQ6K54C6DP2J2US',
-        secretAccesskey: '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',
-        region: 'us-east-1' 
+
      });
 
     // Specify the parameters to pass to the API.
