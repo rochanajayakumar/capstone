@@ -13,7 +13,7 @@ After logging in, you can add the list of classes that the instructor is plannin
  * You must FIRST enter your email address to be VERIFIED 
  * Check spam folder for potential verifiation email 
  * Follow steps in verficiation email to verify your address within SES 
- * Clear email address and retype your email address to receive welcome distro email
+ * CLEAR email address and RETYPE your email address to receive welcome distro email
 
 # Future Improvements 
 
